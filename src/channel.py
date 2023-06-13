@@ -1,3 +1,4 @@
+from .utils import youtube, printj
 
 
 class Channel:
@@ -5,8 +6,9 @@ class Channel:
 
     def __init__(self, channel_id: str) -> None:
         """Экземпляр инициализируется id канала. Дальше все данные будут подтягиваться по API."""
-        pass
+        self.channel_id = channel_id
+        self.channel_info = youtube.channels().list(id=self.channel_id, part='snippet,statistics').execute()
 
     def print_info(self) -> None:
         """Выводит в консоль информацию о канале."""
-        pass
+        printj(self.channel_info)
