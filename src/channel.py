@@ -20,6 +20,57 @@ class Channel:
         self.video_count = int(statistics['videoCount'])
         self.view_count = int(statistics['viewCount'])
 
+    def __str__(self):
+        """Возвращает описание для пользователя"""
+        return f"{self.title} ({self.url})"
+
+    def __add__(self, other):
+        """Возвращает сумму подписчиков такущего и другого объекта"""
+        return self.subscriber_count + other.subscriber_count
+
+    def __sub__(self, other):
+        """Возвращает разницу подписчиков такущего и другого объекта"""
+        return self.subscriber_count - other.subscriber_count
+
+    def __lt__(self, other):
+        """
+        Проверяет, является ли количество подписчиков текущего объекта меньшим, чем количество подписчиков другого
+        объекта.
+        Возвращает bool
+        """
+        return self.subscriber_count < other.subscriber_count
+
+    def __le__(self, other):
+        """
+        Проверяет, является ли количество подписчиков текущего объекта меньшим или равным количеству подписчиков другого
+        объекта.
+        Возвращает bool
+        """
+        return self.subscriber_count <= other.subscriber_count
+
+    def __gt__(self, other):
+        """
+        Проверяет, является ли количество подписчиков текущего объекта большим, чем количество подписчиков другого
+        объекта.
+        Возвращает bool
+        """
+        return self.subscriber_count > other.subscriber_count
+
+    def __ge__(self, other):
+        """
+        Проверяет, является ли количество подписчиков текущего объекта большим или равным количеству подписчиков другого
+        объекта.
+        Возвращает bool
+        """
+        return self.subscriber_count >= other.subscriber_count
+
+    def __eq__(self, other):
+        """
+        Проверяет, является ли количество подписчиков текущего объекта равным количеству подписчиков другого объекта.
+        Возвращает bool
+        """
+        return self.subscriber_count == other.subscriber_count
+
     @property
     def channel_id(self):
         return self.__channel_id
